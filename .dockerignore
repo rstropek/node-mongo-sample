@@ -1,0 +1,9 @@
+node_modules
+dist
+.vscode
+SetEnv.cmd
+package-lock.json
+readme.md
+.gitignore
+.dockerignore
+.git
