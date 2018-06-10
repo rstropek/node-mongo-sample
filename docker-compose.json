@@ -1,0 +1,29 @@
+{
+  "version": "3",
+  "services": {
+    "event-api": {
+      "build": ".",
+      "ports": [
+        "1337:80"
+      ],
+      "links": [
+        "event-db"
+      ],
+      "environment": [
+        "MONGO_URL=mongodb://event-db/member-management"
+      ]
+    },
+    "event-db": {
+      "image": "mongo",
+      "volumes": [
+        "event-data:/data/db"
+      ],
+      "ports": [
+        "27017:27017"
+      ]
+    }
+  },
+  "volumes": {
+    "event-data": null
+  }
+}

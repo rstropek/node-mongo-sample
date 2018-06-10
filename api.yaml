@@ -136,13 +136,6 @@ paths:
       summary: Adds a registration for an event
       tags:
       - Registrations
-      parameters:
-      - name: _id
-        in: path
-        description: ID of the event for the registration
-        required: true
-        schema:
-          type: string
       requestBody:
         description: Data of the registration
         required: true
@@ -184,13 +177,6 @@ paths:
       summary: Gets registrations for an event
       tags:
       - Registrations
-      parameters:
-      - name: _id
-        in: path
-        description: ID of the event for the registration
-        required: true
-        schema:
-          type: string
       responses:
         '200':
           description: Registrations
@@ -202,6 +188,14 @@ paths:
                   $ref: '#/components/schemas/registration'
         '500':
           $ref: '#/components/responses/error'
+    # Note global parameters for all operations of this path
+    parameters:
+    - name: _id
+      in: path
+      description: ID of the event for the registration
+      required: true
+      schema:
+        type: string
   /participants/{participantId}/checkin/{eventId}:
     post:
       operationId: CheckIn

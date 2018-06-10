@@ -11,5 +11,6 @@ exports.CLEAN = [
     "!build/**/*.js",
     "dist/**",
     "!dist",
-    "!dist/.git"
+    "!dist/.git",
+    "api.json"
 ];
