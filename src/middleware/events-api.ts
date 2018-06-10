@@ -1,4 +1,3 @@
-import { IEventbriteEventStatus } from '../dataAccess/contracts';
 import * as express from "express";
 import * as contracts from "../dataAccess/contracts";
 import * as model from "../model";
@@ -8,20 +7,13 @@ import * as config from '../config';
 export async function getAll(req: express.Request, res: express.Response, next: express.NextFunction) {
     try {
         const includePastEvents = req.query.past && req.query.past === "true";
-        const includeTicketClassStatus = req.query.tcStatus && req.query.tcStatus === "true";
 
         // Query db
         const dc = getDataContext(req);
         let result = await dc.events.getAll(includePastEvents);
 
-        if (includeTicketClassStatus) {
-            const statuses = await dc.eventbrite.getTicketClassStatuses(result.map(e => e.eventbriteId));
-            result.forEach(e => {
-                const status = statuses.filter(s => s.eventId == e.eventbriteId)[0];
-                e.quantitySold = status.quantitySold;
-                e.quantityTotal = status.quantityTotal;
-            });
-        }
+        // Add URL
+        result.forEach(r => r.url = `${req.protocol}://${req.get('Host')}/api/events/${r._id}`);
 
         // Build result
         res.status(200).send(result);
@@ -63,7 +55,7 @@ export async function add(req: express.Request, res: express.Response, next: exp
         let result = await store.add(event);
 
         // Build result
-        res.setHeader("Location", `/api/events/${result._id}`);
+        res.setHeader("Location", `${req.protocol}://${req.get('Host')}/api/events/${result._id}`);
         res.status(201).send(result);
     } catch (err) {
         res.status(500).send({ error: err });
@@ -101,7 +93,7 @@ export async function addRegistration(req: express.Request, res: express.Respons
         // Make sure participant is there 
         if (!req.body.participant) {
             // Bad request
-            res.status(400).send({ message: "Missing member 'participant'" });
+            res.status(400).send("Missing member 'participant'");
             return;
         }
 
@@ -110,7 +102,7 @@ export async function addRegistration(req: express.Request, res: express.Respons
         let validation = model.isValidParticipant(participant, true);
         if (!validation.isValid) {
             // Bad request
-            res.status(400).send({ message: validation.errorMessage });
+            res.status(400).send(validation.errorMessage);
             return;
         }
 
@@ -130,7 +122,8 @@ export async function addRegistration(req: express.Request, res: express.Respons
             await dc.registrations.checkIn(event, participant);
         }
 
-        return res.status(201).end();
+        res.setHeader("Location", `${req.protocol}://${req.get('Host')}/api/events/${event._id}/${registration._id}`);
+        return res.status(201).send(registration);
     } catch (err) {
         res.status(500).send({ error: err });
     }

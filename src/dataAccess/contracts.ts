@@ -6,7 +6,6 @@ export interface IDataContext {
     events: IEventStore;
     participants: IParticipantStore;
     registrations: IRegistrationStore;
-    eventbrite: IEventbrite;
     clients: IClientStore;
 }
 
@@ -66,48 +65,4 @@ export interface IGenderStatistics {
     gender: string,
     registered: number,
     checkedin: number
-}
-
-export interface IEventbriteEvent {
-    id: string;
-    date: Date;
-}
-
-export interface IEventbriteEventStatus {
-    eventId: string;
-    quantitySold: number;
-    quantityTotal: number;
-}
-
-export interface IEventbriteAttendee {
-    id: string;
-    givenName: string;
-    familyName: string;
-    email: string;
-    attending: boolean;
-    yearOfBirth?: string;
-    needsComputer?: boolean;
-}
-
-export interface IEventbritePagedResult<T> {
-    pageNumber: number;
-    pageCount: number;
-    result: T[];
-}
-
-export interface IEventbriteTicketClass {
-    id: string;
-    name: string;
-}
-
-export interface IEventbriteQuestions {
-    yearOfBirthQuestionId?: string;
-    needsComputerQuestionId?: string;
-}
-
-export interface IEventbrite {
-     getEvents() : Promise<IEventbriteEvent[]>;
-     getAttendees(eventId: string, coderTicketClasses: string[]) : Promise<IEventbriteAttendee[]>;
-     getCoderTicketClasses(eventId: string) : Promise<string[]>;
-     getTicketClassStatuses(eventIds: string[]): Promise<IEventbriteEventStatus[]>;
 }

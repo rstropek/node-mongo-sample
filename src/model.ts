@@ -37,7 +37,8 @@ export interface IEvent extends IMongoObject {
     location: string;
     eventbriteId?: string;
     quantitySold?: number;
-    quantityTotal?: number;    
+    quantityTotal?: number;
+    url?: string;
 }
 
 export function isValidEvent(event: IEvent, isNew: boolean): IValidationResult {
@@ -73,17 +74,12 @@ export function isValidEvent(event: IEvent, isNew: boolean): IValidationResult {
     return { isValid: true };
 }
 
-export interface IParticipantRoles {
-    isAdmin?: boolean;
-}
-
 export interface IParticipant extends IMongoObject {
     givenName?: string;
     familyName?: string;
     email?: string;
     googleSubject?: string;
     eventbriteId?: string;
-    roles?: IParticipantRoles;
     yearOfBirth?: string;
     gender?: string;
 }
@@ -125,16 +121,6 @@ export function isValidParticipant(participant: IParticipant, isNew: boolean): I
         return { isValid: false, errorMessage: "'eventbriteId' is not of type 'string'." };
     }
 
-    if (participant.roles) {
-        if (typeof participant.roles !== "object") {
-            return { isValid: false, errorMessage: "'roles' is not of type 'object'." };
-        }
-
-        if (participant.roles.isAdmin && typeof participant.roles.isAdmin !== "boolean") {
-            return { isValid: false, errorMessage: "'roles.isAdmin' is not of type 'boolean'." };
-        }
-    }
-
     return { isValid: true };
 }
 
@@ -155,7 +141,6 @@ export interface IRegistration extends IMongoObject {
     registered?: boolean;
     checkedin?: boolean;
     needsComputer?: boolean;
-    totalNumberOfCheckins?: number;
 }
 
 export function isValidRegistration(registration: IRegistration, isNew: boolean): IValidationResult {
