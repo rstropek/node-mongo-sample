@@ -1,5 +1,6 @@
 @host=https://swagger-workshop.azurewebsites.net
 #@host=http://localhost:1337
+@generator-host=http://localhost:8082
 
 ###
 GET {{host}}/api/events?past=true
@@ -37,3 +38,24 @@ POST {{host}}/api/participants/5b1cdae187dae00eb4eebae3/checkin/5b1cc47c9e549d53
 Content-Type: application/json
 Accept: application/json
 
+###
+GET {{generator-host}}/api/gen/clients/
+Accept: application/json
+
+###
+GET {{generator-host}}/api/gen/clients/typescript-node
+Accept: application/json
+
+###
+POST {{generator-host}}/api/gen/clients/typescript-node
+Content-Type: application/json
+
+{
+  "spec": {},
+  "options": {
+      "supportsES6": true
+  },
+  "swaggerUrl": "https://rawgit.com/rstropek/node-mongo-sample/master/api2.json",
+  "authorizationValue": {},
+  "securityDefinition": {}
+}
