@@ -4,6 +4,19 @@
 
 This sample image implements a simple RESTful Web API for event- and participant management. It is implemented in Node.js and uses MongoDB to store data. I use this image in Docker and Kubernetes trainings.
 
+## Swagger and OpenAPI
+
+This sample also contains an OpenAPI specification for the Web API. I use it in workshops to speak about Swagger and OpenAPI. Here are the links to the specifications:
+
+* Swagger (v2)
+  * [YAML on GitHub](https://github.com/rstropek/node-mongo-sample/blob/master/api2.yaml)
+  * [JSON on GitHub](https://github.com/rstropek/node-mongo-sample/blob/master/api2.json)
+  * [JSON raw](https://rawgit.com/rstropek/node-mongo-sample/master/api2.json)
+* OpenAPI (v3)
+  * [YAML on GitHub](https://github.com/rstropek/node-mongo-sample/blob/master/api3.yaml)
+  * [JSON on GitHub](https://github.com/rstropek/node-mongo-sample/blob/master/api3.json)
+  * [JSON raw](https://rawgit.com/rstropek/node-mongo-sample/master/api3.json)
+
 ## Quickstart
 
 ### Step 1
