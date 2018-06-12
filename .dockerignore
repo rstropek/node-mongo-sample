@@ -7,3 +7,4 @@ readme.md
 .gitignore
 .dockerignore
 .git
+*.code-snippets
