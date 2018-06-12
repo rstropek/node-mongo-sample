@@ -61,7 +61,7 @@
           "500": {
             "description": "Error",
             "schema": {
-              "$ref": "#/definitions/error"
+              "$ref": "#/definitions/errorResponse"
             }
           }
         }
@@ -107,7 +107,7 @@
           "500": {
             "description": "Error",
             "schema": {
-              "$ref": "#/definitions/error"
+              "$ref": "#/definitions/errorResponse"
             }
           }
         }
@@ -142,7 +142,7 @@
           "500": {
             "description": "Error",
             "schema": {
-              "$ref": "#/definitions/error"
+              "$ref": "#/definitions/errorResponse"
             }
           }
         }
@@ -193,7 +193,7 @@
           "500": {
             "description": "Error",
             "schema": {
-              "$ref": "#/definitions/error"
+              "$ref": "#/definitions/errorResponse"
             }
           }
         }
@@ -217,7 +217,7 @@
           "500": {
             "description": "Error",
             "schema": {
-              "$ref": "#/definitions/error"
+              "$ref": "#/definitions/errorResponse"
             }
           }
         }
@@ -282,7 +282,7 @@
           "500": {
             "description": "Error",
             "schema": {
-              "$ref": "#/definitions/error"
+              "$ref": "#/definitions/errorResponse"
             }
           }
         }
@@ -470,7 +470,7 @@
         }
       }
     },
-    "error": {
+    "errorResponse": {
       "type": "object",
       "required": [
         "error"

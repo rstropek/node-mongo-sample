@@ -77,7 +77,7 @@
             }
           },
           "500": {
-            "$ref": "#/components/responses/error"
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       },
@@ -138,7 +138,7 @@
             }
           },
           "500": {
-            "$ref": "#/components/responses/error"
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       }
@@ -176,7 +176,7 @@
             "description": "Event with the specified it not found"
           },
           "500": {
-            "$ref": "#/components/responses/error"
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       }
@@ -242,7 +242,7 @@
             "description": "Specified event ID not found"
           },
           "500": {
-            "$ref": "#/components/responses/error"
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       },
@@ -267,7 +267,7 @@
             }
           },
           "500": {
-            "$ref": "#/components/responses/error"
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       },
@@ -339,7 +339,7 @@
             "description": "Event or participant with specified ID not found"
           },
           "500": {
-            "$ref": "#/components/responses/error"
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       }
@@ -347,7 +347,7 @@
   },
   "components": {
     "responses": {
-      "error": {
+      "errorResponse": {
         "description": "Internal server error",
         "content": {
           "application/json": {

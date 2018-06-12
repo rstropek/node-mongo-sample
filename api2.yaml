@@ -51,7 +51,7 @@ paths:
           description: Error
           schema:
             # Note reference to reusable component
-            $ref: '#/definitions/error'
+            $ref: '#/definitions/errorResponse'
     post:
       operationId: AddEvent
       summary: Adds an event
@@ -84,7 +84,7 @@ paths:
           description: Error
           schema:
             # Note reference to reusable component
-            $ref: '#/definitions/error'
+            $ref: '#/definitions/errorResponse'
   /events/{_id}:
     get:
       operationId: GetEvent
@@ -107,7 +107,7 @@ paths:
         '500':
           description: Error
           schema:
-            $ref: '#/definitions/error'
+            $ref: '#/definitions/errorResponse'
   /events/{_id}/registrations:
     post:
       operationId: AddEventRegistration
@@ -141,7 +141,7 @@ paths:
         '500':
           description: Error
           schema:
-            $ref: '#/definitions/error'
+            $ref: '#/definitions/errorResponse'
     get:
       operationId: GetEventRegistrations
       summary: Gets registrations for an event
@@ -157,7 +157,7 @@ paths:
         '500':
           description: Error
           schema:
-            $ref: '#/definitions/error'
+            $ref: '#/definitions/errorResponse'
     parameters:
     - name: _id
       in: path
@@ -201,7 +201,7 @@ paths:
         '500':
           description: Error
           schema:
-            $ref: '#/definitions/error'
+            $ref: '#/definitions/errorResponse'
 definitions:
   newEvent:
     type: object
@@ -336,7 +336,7 @@ definitions:
       checkedin:
         type: boolean
         description: Indicates whether the participant has checked in for the event
-  error:
+  errorResponse:
     type: object
     required:
     - error

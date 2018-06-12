@@ -59,7 +59,7 @@ paths:
                   $ref: '#/components/schemas/event'
         '500':
           # Note reference to reusable component
-          $ref: '#/components/responses/error'
+          $ref: '#/components/responses/errorResponse'
     post:
       operationId: AddEvent
       summary: Adds an event
@@ -104,7 +104,7 @@ paths:
                 example: Mandatory member 'location' is missing.
         '500':
           # Note reference to reusable component
-          $ref: '#/components/responses/error'
+          $ref: '#/components/responses/errorResponse'
   /events/{_id}:
     get:
       operationId: GetEvent
@@ -129,7 +129,7 @@ paths:
           description: Event with the specified it not found
         '500':
           # Note reference to reusable component
-          $ref: '#/components/responses/error'
+          $ref: '#/components/responses/errorResponse'
   /events/{_id}/registrations:
     post:
       operationId: AddEventRegistration
@@ -171,7 +171,7 @@ paths:
         '404':
           description: Specified event ID not found
         '500':
-          $ref: '#/components/responses/error'
+          $ref: '#/components/responses/errorResponse'
     get:
       operationId: GetEventRegistrations
       summary: Gets registrations for an event
@@ -187,7 +187,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/registration'
         '500':
-          $ref: '#/components/responses/error'
+          $ref: '#/components/responses/errorResponse'
     # Note global parameters for all operations of this path
     parameters:
     - name: _id
@@ -235,10 +235,10 @@ paths:
         '404':
           description: Event or participant with specified ID not found
         '500':
-          $ref: '#/components/responses/error'
+          $ref: '#/components/responses/errorResponse'
 components:
   responses:
-    error:
+    errorResponse:
       description: Internal server error
       content:
         application/json:
