@@ -30,7 +30,7 @@ app.get("/api/participants/statistics/gender", participantsApi.getGenderStatisti
 
 // Start express server
 var port: any = process.env.port || 1337;
-addDataContext(config.MONGO_URL, app, () => {
+addDataContext(config.MONGO_URL, 'sample', app, () => {
     app.listen(port, () => {
         console.log(`Server is listening on port ${port}`);
     });
