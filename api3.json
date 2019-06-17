@@ -36,6 +36,10 @@
     {
       "url": "http://localhost:1337/api",
       "description": "The development API server"
+    },
+    {
+      "url": "https://swagger-workshop.azurewebsites.net/api",
+      "description": "Demo API deployed to Microsoft Azure"
     }
   ],
   "paths": {
@@ -352,7 +356,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/error"
+              "$ref": "#/components/schemas/errorResponse"
             }
           }
         }
@@ -540,7 +544,7 @@
           }
         }
       },
-      "error": {
+      "errorResponse": {
         "type": "object",
         "required": [
           "error"

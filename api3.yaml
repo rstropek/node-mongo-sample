@@ -26,6 +26,8 @@ servers:
       default: v1
 - url: http://localhost:1337/api
   description: The development API server
+- url: https://swagger-workshop.azurewebsites.net/api
+  description: Demo API deployed to Microsoft Azure
 paths:
   /events:
     get:
@@ -243,7 +245,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/error'
+            $ref: '#/components/schemas/errorResponse'
   schemas:
     newEvent:
       type: object
@@ -377,7 +379,7 @@ components:
         checkedin:
           type: boolean
           description: Indicates whether the participant has checked in for the event
-    error:
+    errorResponse:
       type: object
       required:
       - error

@@ -1,4 +1,4 @@
-@host=https://swagger-workshop.azurewebsites.net
+@host=http://swagger-workshop.westeurope.azurecontainer.io
 #@host=http://localhost:1337
 @generator-host=http://localhost:8082
 
@@ -43,6 +43,8 @@ GET {{generator-host}}/api/gen/clients/
 Accept: application/json
 
 ###
+# See https://github.com/swagger-api/swagger-codegen/blob/master/modules/swagger-codegen/src/main/resources/typescript-node/api.mustache
+# for corresponding template
 GET {{generator-host}}/api/gen/clients/typescript-node
 Accept: application/json
 
@@ -55,7 +57,7 @@ Content-Type: application/json
   "options": {
       "supportsES6": true
   },
-  "swaggerUrl": "https://rawgit.com/rstropek/node-mongo-sample/master/api2.json",
+  "swaggerUrl": "https://raw.githack.com/rstropek/node-mongo-sample/master/api2.json",
   "authorizationValue": {},
   "securityDefinition": {}
 }
