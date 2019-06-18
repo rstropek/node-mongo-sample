@@ -26,7 +26,7 @@ servers:
       default: v1
 - url: http://localhost:1337/api
   description: The development API server
-- url: https://swagger-workshop.azurewebsites.net/api
+- url: http://swagger-workshop.westeurope.azurecontainer.io/api
   description: Demo API deployed to Microsoft Azure
 paths:
   /events:

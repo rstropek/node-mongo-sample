@@ -38,7 +38,7 @@
       "description": "The development API server"
     },
     {
-      "url": "https://swagger-workshop.azurewebsites.net/api",
+      "url": "http://swagger-workshop.westeurope.azurecontainer.io/api",
       "description": "Demo API deployed to Microsoft Azure"
     }
   ],
