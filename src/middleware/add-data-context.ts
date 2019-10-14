@@ -6,7 +6,7 @@ import ParticipantStore from '../dataAccess/participant-store';
 import RegistrationStore from '../dataAccess/registration-store';
 
 function addDataContext(mongoUrl: string, dbName: string, app: express.Express, cb: () => void) {
-    mongodb.MongoClient.connect(mongoUrl, { useNewUrlParser: true }, (err, db) => {
+    mongodb.MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
         const dbi = db.db(dbName);
         (<any>app).dc = {
             db: db,

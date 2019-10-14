@@ -1,4 +1,4 @@
-var gulp = require('gulp');
+const { src, dest, parallel, series, watch } = require('gulp');
 var del = require('del');
 var ts = require('gulp-typescript');
 var config = require('./build/config');
@@ -11,26 +11,33 @@ var tsClientProject = ts.createProject("tsconfig.json", {
 });
 
 // Cleanup by deleting target directory
-gulp.task("clean", () => {
-    del.sync(config.CLEAN);
-});
+function clean() {
+    return del(config.CLEAN);
+}
 
 // Compile Typescript files
-gulp.task("app", [], () => {
-    gulp.src(config.TS_SOURCES)
+function app() {
+    return src(config.TS_SOURCES)
         .pipe(sourcemaps.init())
         .pipe(tsClientProject())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(config.APP_DIST));
-        
-    gulp.src(["package.json"])
-        .pipe(gulp.dest(config.APP_DIST));
-});
+        .pipe(dest(config.APP_DIST));
+}
+
+// Copy package.json
+function appPackage() {
+    return src(["package.json"])
+        .pipe(dest(config.APP_DIST));
+}
 
 // Compile YAML files
-gulp.task("yaml", [], () => {
-    gulp.src('./*.yaml')
-    .pipe(yaml({ space: 2 }))
-    .pipe(gulp.dest('./'))});
+function copyYaml() {
+    return src('./*.yaml')
+        .pipe(yaml({ space: 2 }))
+        .pipe(dest('./'));
+}
 
-gulp.task("default", ["clean", "app", "yaml"], () => { });
+const defaultTasks = series(clean, app, appPackage, copyYaml);
+
+exports.clean = clean;
+exports.default = defaultTasks;

@@ -1,5 +1,4 @@
 exports.TS_SOURCES = [
-    "typings/main.d.ts",
     "src/**/*.ts"
 ];
 exports.APP_DIST = "./dist";
