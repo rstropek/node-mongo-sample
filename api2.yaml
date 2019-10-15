@@ -11,9 +11,9 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
   version: 1.0.0
-host: swagger-workshop.azurewebsites.net
+host: swagger-workshop.westeurope.azurecontainer.io
 schemes:
-  - https
+  - http
 basePath: /api
 consumes:
   - application/json

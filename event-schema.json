@@ -1,0 +1,25 @@
+{
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "_id": {
+                "type": "string"
+            },
+            "date": {
+                "type": "string"
+            },
+            "location": {
+                "type": "string"
+            },
+            "url": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "_id",
+            "date",
+            "location"
+        ]
+    }
+}
